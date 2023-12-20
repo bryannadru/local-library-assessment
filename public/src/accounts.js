@@ -4,7 +4,7 @@ function findAccountById(accounts, id) {
 }
 
 function sortAccountsByLastName(accounts) {
-  return accounts.sort((a,b) => a.name.last.toLowerCase() < b.name.last.toLowerCase() ?  -1 : 1)
+  return accounts.sort((first ,second) => first.name.last.toLowerCase() < second.name.last.toLowerCase() ?  -1 : 1)
   // needs to return list of accounts ordered by last name
   // how else do i reference the last name in the object 
 }
@@ -16,13 +16,13 @@ function sortAccountsByLastName(accounts) {
   // returning how many times the person has borrowed the book
   // by matching the account id with the id under borrowed
 function getTotalNumberOfBorrows(account, books) {
-  return books.reduce((a, b) => {
-    if (b.borrows.some(i => i.id === account.id)) {
+  return books.reduce((first, second) => {
+    if (second.borrows.some(i => i.id === account.id)) {
       // if borrows has id and the account has the id 
-      a++
+      first++
       // increment a
     }
-    return a
+    return first
     // why is this not counting 
     
   }, 0)
@@ -31,15 +31,15 @@ function getTotalNumberOfBorrows(account, books) {
 // returns array of book objects including author info (author name)
 // returns books that are already checked out (if returned = false)
 function getBooksPossessedByAccount(account, books, authors) {
-  return books.reduce((a, b) => {
-    if (b.borrows.some(i => account.id === i.id && i.returned === false)) {
-        const author = authors.find(p => p.id === b.authorId)
+  return books.reduce((first, second) => {
+    if (second.borrows.some(i => account.id === i.id && i.returned === false)) {
+        const author = authors.find(p => p.id === second.authorId)
         
-        if (author) b.author = author 
+        if (author) second.author = author 
     
-        a.push(b)
+        first.push(second)
         }
-    return a
+    return first
   }, [])
 }
 

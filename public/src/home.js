@@ -1,14 +1,14 @@
+function getArrayCount(arr) {
+  return arr.length
+}
+
 function getTotalBooksCount(books) {
-  return books.length
+  return getArrayCount(books)
 }
 
 
 function getTotalAccountsCount(accounts) {
-  let count = 0;
-  accounts.forEach((account) => {
-    count += 1;
-  });
-  return count;
+  return getArrayCount(accounts)
 }
 
 

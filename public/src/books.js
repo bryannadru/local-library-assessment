@@ -1,6 +1,4 @@
-function findAuthorById(authors, id) {
-  return authors.find((author) => author.id === id)
-}
+const findAuthorById = (authors, id) =>  authors.find((author) => author.id === id)
 
 // return book object that matches the id passed in
 function findBookById(books, id) {
@@ -13,7 +11,7 @@ function partitionBooksByBorrowedStatus(books) {
   let checkedOut = [];
   let returnedBooks = [];
 
-  books.forEach((book) => {
+  books.filter((book) => {
     // Assuming the most recent borrow record indicates the current status
     if (book.borrows[0].returned === false) {
       checkedOut.push(book);
